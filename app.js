@@ -40,7 +40,7 @@ function janken(arg1, arg2){
         document.getElementById("result").appendChild(para);
         //console.log("You Win!\n");
         
-    };=
+    };
 };
 
 //this down here is to test shit
