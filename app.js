@@ -9,7 +9,6 @@ options.forEach((option) => {
         let randAnswer = Math.floor(Math.random() * answerArray.length);
         var result = document.getElementById("result");
 
-
         if (result.hasChildNodes()) {
             result.removeChild(result.childNodes[0]);
         }
@@ -42,5 +41,3 @@ function janken(arg1, arg2){
         
     };
 };
-
-//this down here is to test shit
