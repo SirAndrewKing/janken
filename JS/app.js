@@ -4,31 +4,30 @@ let win = 0;
 options.forEach((option) => {
     option.addEventListener("click", function(){
 
-        let answerArray = ["rock", "paper", "scissors"];
         let usrInput = this.value;
-        let randAnswer = Math.floor(Math.random() * answerArray.length);
+        let cpuInput = Math.floor(Math.random() * 3);
         var result = document.getElementById("result");
 
         if (result.hasChildNodes()) {
             result.removeChild(result.childNodes[0]);
         }
 
-        janken(usrInput, randAnswer)
+        janken(usrInput, cpuInput)
 
     });
 });
 
 function janken(arg1, arg2){
     let usrInput = arg1;
-    let randAnswer = arg2;
+    let cpuInput = arg2;
     let para = document.createElement("P")
 
-    if (usrInput == randAnswer){
+    if (usrInput == cpuInput){
         let r = document.createTextNode("You Tied!");
         para.appendChild(r);
         document.getElementById("result").appendChild(para);
         //console.log("You Tied!\n");
-    } else if (usrInput == 0 && randAnswer == 1 || usrInput == 1 && randAnswer == 2 || usrInput == 2 && randAnswer == 0) {
+    } else if (usrInput == 0 && cpuInput == 1 || usrInput == 1 && cpuInput == 2 || usrInput == 2 && cpuInput == 0) {
         let r = document.createTextNode("You Lose!");
         para.appendChild(r);
         document.getElementById("result").appendChild(para);
