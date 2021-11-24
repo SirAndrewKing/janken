@@ -1,42 +1,49 @@
 const options = document.querySelectorAll(".option");
-let win = 0;
+
+let usrScore = 0;
+let cpuScore = 0;
+let tieScore = 0;
 
 options.forEach((option) => {
     option.addEventListener("click", function(){
 
         let usrInput = this.value;
-        let cpuInput = Math.floor(Math.random() * 3);
         var result = document.getElementById("result");
 
         if (result.hasChildNodes()) {
             result.removeChild(result.childNodes[0]);
         }
 
-        janken(usrInput, cpuInput)
-
+        janken(usrInput)
+        updateScore()
     });
 });
 
-function janken(arg1, arg2){
-    let usrInput = arg1;
-    let cpuInput = arg2;
+function janken(usrInput){
     let para = document.createElement("P")
+    let cpuInput = Math.floor(Math.random() * 3);
 
     if (usrInput == cpuInput){
         let r = document.createTextNode("You Tied!");
         para.appendChild(r);
         document.getElementById("result").appendChild(para);
-        //console.log("You Tied!\n");
+        tieScore++;
     } else if (usrInput == 0 && cpuInput == 1 || usrInput == 1 && cpuInput == 2 || usrInput == 2 && cpuInput == 0) {
         let r = document.createTextNode("You Lose!");
         para.appendChild(r);
         document.getElementById("result").appendChild(para);
-        //console.log("You Lose!\n");
+        cpuScore++;
     } else {
         let r = document.createTextNode("You Win!");
         para.appendChild(r);
         document.getElementById("result").appendChild(para);
-        //console.log("You Win!\n");
-        
+        usrScore++;
     };
 };
+
+
+function updateScore() {
+      document.getElementById("usrScore").textContent = usrScore;
+      document.getElementById("cpuScore").textContent = cpuScore;
+      document.getElementById("tieScore").textContent = tieScore;
+    }
