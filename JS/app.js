@@ -1,23 +1,43 @@
-const options = document.querySelectorAll(".option");
+const starts = document.querySelectorAll(".start");
 
 let usrScore = 0;
 let cpuScore = 0;
 let tieScore = 0;
 
-options.forEach((option) => {
-    option.addEventListener("click", function(){
+// clicking the start button on the site starts the game
+// the game is not operational until the start button is clicked
+starts.forEach((start) => {
+    start.addEventListener("click", function() {
 
-        let usrInput = this.value;
-        var result = document.getElementById("result");
+        // next 5 lines remove the start button once it is clicked.
+        var startBtn = document.getElementById("start");
 
-        if (result.hasChildNodes()) {
-            result.removeChild(result.childNodes[0]);
-        }
+        while(startBtn.firstChild) {
+            startBtn.removeChild(startBtn.firstChild)
+        };
+        // unhides the game div (none > block)
+        document.getElementById('game').style.display = "block";
+        // everything after this line only works when the start button is clicked.
+        const options = document.querySelectorAll(".option");
 
-        janken(usrInput)
-        updateScore()
+        options.forEach((option) => {
+            option.addEventListener("click", function(){
+
+                let usrInput = this.value;
+                var result = document.getElementById("result");
+
+                if (result.hasChildNodes()) {
+                    result.removeChild(result.childNodes[0]);
+                }
+
+                janken(usrInput)
+                updateScore()
+            });
+        });
     });
 });
+
+
 
 function janken(usrInput){
     let para = document.createElement("P")
