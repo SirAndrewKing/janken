@@ -13,12 +13,20 @@
 </head>
 <body>
 	<center>
-		<h1>Click Rock, Paper, or Scissor.</h1>
-		<button class="option" value="0">Rock</button>
-		<button class="option" value="1">Paper</button>
-		<button class="option" value="2">Scissor</button>
-		<h2>W: <span id="usrScore">0</span> / L: <span id="cpuScore">0</span> / T: <span id="tieScore">0</span></h2>
-		<div id="result"></div>
+		<div id="start">
+			<h1>Click to Start!</h1>
+			<button class="start" value="true">start</button>
+		</div>
+		
+		<div id="game" style="display:none;">
+			<h1>Click Rock, Paper, or Scissor.</h1>
+			<button class="option" value="0">Rock</button>
+			<button class="option" value="1">Paper</button>
+			<button class="option" value="2">Scissor</button>
+			<h2>W: <span id="usrScore">0</span> / L: <span id="cpuScore">0</span> / T: <span id="tieScore">0</span></h2>
+			<div id="result"></div>
+		</div>
+		
 	</center>
 
 	<script type="text/javascript" src="JS\app.js"></script>
