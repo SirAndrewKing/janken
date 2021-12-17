@@ -1,8 +1,10 @@
 const starts = document.querySelectorAll(".start");
 
+// these update where they get called from (anywhere "janken(usrInput)" is)
 let usrScore = 0;
 let cpuScore = 0;
 let tieScore = 0;
+let totalGames = 0;
 
 // clicking the start button on the site starts the game
 // the game is not operational until the start button is clicked
@@ -10,7 +12,7 @@ starts.forEach((start) => {
     start.addEventListener("click", function() {
 
         // next 5 lines remove the start button once it is clicked.
-        var startBtn = document.getElementById("start");
+        let startBtn = document.getElementById("start");
 
         while(startBtn.firstChild) {
             startBtn.removeChild(startBtn.firstChild)
@@ -24,12 +26,11 @@ starts.forEach((start) => {
             option.addEventListener("click", function(){
 
                 let usrInput = this.value;
-                var result = document.getElementById("result");
+                let result = document.getElementById("result");
 
                 if (result.hasChildNodes()) {
                     result.removeChild(result.childNodes[0]);
-                }
-
+                };
                 janken(usrInput)
                 updateScore()
             });
@@ -48,16 +49,19 @@ function janken(usrInput){
         para.appendChild(r);
         document.getElementById("result").appendChild(para);
         tieScore++;
+        totalGames++;
     } else if (usrInput == 0 && cpuInput == 1 || usrInput == 1 && cpuInput == 2 || usrInput == 2 && cpuInput == 0) {
         let r = document.createTextNode("You Lose!");
         para.appendChild(r);
         document.getElementById("result").appendChild(para);
         cpuScore++;
+        totalGames++;
     } else {
         let r = document.createTextNode("You Win!");
         para.appendChild(r);
         document.getElementById("result").appendChild(para);
         usrScore++;
+        totalGames++;
     };
 };
 
