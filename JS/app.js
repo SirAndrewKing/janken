@@ -1,12 +1,10 @@
 const starts = document.querySelectorAll(".start");
-const newGs = document.querySelectorAll(".newG");
 
 // these update where they get called from (anywhere "janken(usrInput)" is)
 let usrScore = 0;
 let cpuScore = 0;
 let tieScore = 0;
 let totalGames = 0;
-
 
 
 // clicking the start button on the site starts the game
@@ -74,17 +72,12 @@ function updateScore(){
       document.getElementById("tieScore").textContent = tieScore;
     };
 
-
+// it just reloads the page
 function newGame(){
-
+    const newGs = document.querySelectorAll(".newG");
     newGs.forEach((newG) => {
         newG.addEventListener("click", function(){
-
-            //hides the game div
-            document.getElementById("game").style.display = "none";
-            //unhides the start div
-            document.getElementById("start").style.display = "block";
-            
+            document.location.reload()
         });
     });
 };
