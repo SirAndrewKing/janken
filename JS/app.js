@@ -19,9 +19,9 @@ startBtns.forEach((startBtn) => {
             
             unltdPlays()
         } else if (startBtnInput == "BO3") {
-            bestOf3()
+            bestOfNum(3)
         } else if (startBtnInput == "BO5") {
-            bestOf5()
+            bestOfNum(5)
         } else {
             console.log("something went wrong")
         }
@@ -82,7 +82,9 @@ function unltdPlays() {
     });
 };
 
-function bestOf3() {
+
+// bestOfNumber math.. divide provided number by 2 if there is a remainder round up
+function bestOfNum(rounds) {
     document.getElementById("start").style.display = "none";
     document.getElementById("game").style.display = "block";
     document.getElementById("newGBtn").style.display = "block";
@@ -102,7 +104,7 @@ function bestOf3() {
             janken(usrInput);
             updateScore();
 
-            if(usrScore == 2) {
+            if(usrScore == Math.ceil(rounds / 2)) {
                 //the code in this else-if block removes the contents of the
                 // id="game" div and replaces it with text for a win
                 let gameDiv = document.getElementById("game");
@@ -119,68 +121,7 @@ function bestOf3() {
                     document.getElementById("game").appendChild(h1)
                 };
 
-            } else if (cpuScore == 2){
-                //the code in this else-if block removes the contents of the
-                // id="game" div and replaces it with text for a loss
-                let gameDiv = document.getElementById("game");
-
-                while(gameDiv.firstChild) {
-                    gameDiv.removeChild(gameDiv.firstChild)
-                };
-
-                let h1 = document.createElement("H1");
-                let h1T = document.createTextNode("You Lost Bro!")
-
-                while (document.getElementById("game").innerHTML.trim().length == 0) {
-                    h1.appendChild(h1T)
-                    document.getElementById("game").appendChild(h1)
-                };
-
-            } else {
-                // do nothing here
-            };
-        });
-    });
-};
-
-function bestOf5() {
-    document.getElementById("start").style.display = "none";
-    document.getElementById("game").style.display = "block";
-    document.getElementById("newGBtn").style.display = "block";
-    
-    const options = document.querySelectorAll(".option");
-    
-    options.forEach((option) => {
-        option.addEventListener("click", function() {
-
-            let usrInput = this.value;
-            let result = document.getElementById("result");
-
-            if (result.hasChildNodes()) {
-                    result.removeChild(result.childNodes[0]);
-            };
-
-            janken(usrInput);
-            updateScore();
-
-            if(usrScore == 3) {
-                //the code in this else-if block removes the contents of the
-                // id="game" div and replaces it with text for a win
-                let gameDiv = document.getElementById("game");
-
-                while(gameDiv.firstChild) {
-                    gameDiv.removeChild(gameDiv.firstChild)
-                };
-
-                let h1 = document.createElement("H1");
-                let h1T = document.createTextNode("You Won Bro!")
-
-                while (document.getElementById("game").innerHTML.trim().length == 0) {
-                    h1.appendChild(h1T)
-                    document.getElementById("game").appendChild(h1)
-                };
-
-            } else if (cpuScore == 3){
+            } else if (cpuScore == Math.ceil(rounds / 2)){
                 //the code in this else-if block removes the contents of the
                 // id="game" div and replaces it with text for a loss
                 let gameDiv = document.getElementById("game");
