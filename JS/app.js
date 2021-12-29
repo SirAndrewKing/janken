@@ -19,9 +19,9 @@ startBtns.forEach((startBtn) => {
             
             unltdPlays()
         } else if (startBtnInput == "BO3") {
-            bestOfNumber(3)
+            bestOfNum(3)
         } else if (startBtnInput == "BO5") {
-            bestOfNumber(5)
+            bestOfNum(5)
         } else {
             console.log("something went wrong")
         }
@@ -84,7 +84,7 @@ function unltdPlays() {
 
 
 // bestOfNumber math.. divide provided number by 2 if there is a remainder round up
-function bestOfNumber(rounds) {
+function bestOfNum(rounds) {
     document.getElementById("start").style.display = "none";
     document.getElementById("game").style.display = "block";
     document.getElementById("newGBtn").style.display = "block";
