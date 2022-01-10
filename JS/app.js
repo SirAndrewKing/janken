@@ -4,20 +4,17 @@ let cpuScore = 0;
 let tieScore = 0;
 let totalGames = 0;
 
-
 const startBtns = document.querySelectorAll(".startBtn");
 // looks for input from the class "startBtn"
 // then starts a for loop based on the buttons value
 // which then starts the game
 startBtns.forEach((startBtn) => {
     startBtn.addEventListener("click", function() {
-        // code goes here
         let startBtnInput = this.value;
 
         if (startBtnInput == "unltdPlay") {
-            // newGame() placed here to load immediatly after game is started
-            
-            unltdPlays()
+            // 'Infinity' is used here to create an unlimited amount of rounds.
+            bestOfNum(Infinity)
         } else if (startBtnInput == "BO3") {
             bestOfNum(3)
         } else if (startBtnInput == "BO5") {
@@ -26,11 +23,9 @@ startBtns.forEach((startBtn) => {
             console.log("something went wrong")
         }
     });
+    // newGame() placed here to load immediatly after game is started
     newGame();
 });
-
-
-
 
 function janken(usrInput) {
     let para = document.createElement("P")
@@ -56,32 +51,6 @@ function janken(usrInput) {
         totalGames++;
     };
 };
-
-
-function unltdPlays() {
-    document.getElementById("start").style.display = "none";
-    document.getElementById("game").style.display = "block";
-    document.getElementById("newGBtn").style.display = "block";
-    
-    const options = document.querySelectorAll(".option");
-    
-    options.forEach((option) => {
-        option.addEventListener("click", function() {
-
-            let usrInput = this.value;
-            let result = document.getElementById("result");
-
-            if (result.hasChildNodes()) {
-                    result.removeChild(result.childNodes[0]);
-            };
-
-            janken(usrInput);
-            updateScore();
-
-        });
-    });
-};
-
 
 // bestOfNumber math.. divide provided number by 2 if there is a remainder round up
 function bestOfNum(rounds) {
@@ -139,7 +108,7 @@ function bestOfNum(rounds) {
                 };
 
             } else {
-                // do nothing here
+                // do nothing here for now
             };
         });
     });
@@ -151,7 +120,7 @@ function updateScore() {
       document.getElementById("tieScore").textContent = tieScore;
     };
 
-// it just reloads the page
+// this function just reloads the page
 function newGame() {
     const newGs = document.querySelectorAll(".newG");
     newGs.forEach((newG) => {
